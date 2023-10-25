@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Login
+    </title>
+  </head>
 
+  <body>
+    <h1>Sign up</h1>
+    <form autocomplete="on" onsubmit="addUser()">
+      <input type = "text" id = "username" placeholder= "ํusername">
+      <input type = "text" id = "password" placeholder= "password">
+      <button>sign up</button>
+    </form>
+
+    <h1>Log in</h1>
+    <form autocomplete="on" onsubmit="loginCheck()">
+      <input type = "text" class="js-loginUser" placeholder= "ํusername">
+      <input type = "text" class = "js-loginPass" placeholder= "password">
+      <button>login</button>
+    </form>
+
+
+
+    <script>
+      let userPass = JSON.parse(localStorage.getItem('userPass')) ||
+        {};
+      function addUser(){
+        event.preventDefault();
+        let userUsername = document.getElementById("username").value;
+        let userPassword = document.getElementById("password").value;
+        if (userUsername !== '' && userPassword !== ''){
+          if (userUsername in userPass === false){
+            userPass[userUsername] = userPassword
+            localStorage.setItem('userPass', JSON.stringify(userPass));
+          }
+          else{
+            console.log('Cannot use this username or you have already logined')
+          }
+        }
+        else{
+          console.log('Enter your username and password')
+        } 
+        console.log(userPass) 
+        }
+
+      function loginCheck(){
+        const username = document.querySelector('.js-loginUser').value;
+        const password = document.querySelector('.js-loginPass').value;
+        if (username in userPass && userPass[username] === password){
+          alert(`Hello ${username}`)
+        }
+        else{
+          alert('Something wrong')
+        }
+      }  
+    </script>
+  </body>
+</html>
