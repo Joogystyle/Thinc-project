@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Log in
+    </title>
+  </head>
+
+  <body>
+    <h1>Log in</h1>
+    <form autocomplete="on" onsubmit="Login()">
+      <input type = "text" id = "username" placeholder= "username" required>
+      <input type = "password" id = "password" placeholder= "password" required>
+      <button>log in</button>
+    </form>
+
+    <script> 
+        let userPass = JSON.parse(localStorage.getItem('userPass')) ||
+    {};
+
+function Login() {
+    let getusername = document.getElementById("username").value;
+    let getpassword = document.getElementById("password").value;
+    
+    if (getusername in userPass === true) {
+        if (getpassword === userPass[getusername]){
+            localStorage.setItem("currentUser", JSON.stringify(getusername));
+            
+            console.log(alert("log in successfully"));
+            //window.location.replace("Home-page.html");
+        }
+        else{
+            console.log(alert("log in fail"))
+        }
+            
+    }
+}
+console.log(JSON.parse(localStorage.getItem("currentUser")))
+
+    </script>
+  </body>
+</html>
