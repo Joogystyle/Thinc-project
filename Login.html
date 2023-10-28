@@ -26,8 +26,8 @@ function Login() {
         if (getpassword === userPass[getusername]){
             localStorage.setItem("currentUser", JSON.stringify(getusername));
             
-            console.log(alert("log in successfully"));
-            //window.location.replace("Home-page.html");
+            //console.log(alert("log in successfully"));
+            window.location.replace("Home-page2.html");
         }
         else{
             console.log(alert("log in fail"))
