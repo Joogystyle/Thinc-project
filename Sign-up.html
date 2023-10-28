@@ -6,7 +6,7 @@
     </title>
   </head>
 
-  <body>
+  <body class="body-signup">
     <h1>Sign up</h1>
     <form autocomplete="on" onsubmit="addUser()">
       <input type = "text" id = "username" placeholder= "ํusername" required>
@@ -14,25 +14,34 @@
       <button>sign up</button>
     </form>
 
-    <script>
-      let userPass = JSON.parse(localStorage.getItem('userPass')) ||
-        {};
-      function addUser(){
-        event.preventDefault();
-        let userUsername = document.getElementById("username").value;
-        let userPassword = document.getElementById("password").value;
-        
-        if (userUsername in userPass === false){
-            userPass[userUsername] = userPassword
-            localStorage.setItem('userPass', JSON.stringify(userPass));
-            window.location.replace("Home-page.html")
-        }
-        else{
-            console.log(alert('Cannot use this username or you have already logined'))
-        }
-        }
+   
+   <script>
+    
+    localStorage.removeItem('currentUser');
+    let userPass = JSON.parse(localStorage.getItem('userPass')) ||
+    {};
+    let currentUser = {}
 
-  
+
+    function addUser(){
+      event.preventDefault();
+      let userUsername = document.getElementById("username").value;
+      let userPassword = document.getElementById("password").value;
+      
+      if (userUsername in userPass === false){
+      userPass[userUsername] = userPassword
+      currentUser[userUsername] = userPassword
+      localStorage.setItem('userPass', JSON.stringify(userPass));
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      console.log('Pun')
+      location.assign('Homepage2.html')
+      }
+      else{
+      console.log(alert('Cannot use this username or you have already logined'))
+      }
+    }
+
+      
     </script>
   </body>
 </html>
