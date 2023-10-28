@@ -1,1 +1,50 @@
+<!DOCTYPE html>
+<html>
+   
+    <head>
+      <title>Potato</title>
+    </head>
+    
+    <body>
+      <p>
+        <button class="js-account"></button>
+        <button class="js-logout">Log out</button>
+      </p>
+      <h1>
+        Potato.com
+      </h1>
 
+      <div class="topnav">
+        <input type="text" placeholder="Search..">
+    </div>
+     
+      <h2>
+        categories
+      </h2>
+      <p>
+        <button>Fashion</button>
+        <button>Sport</button>
+        <button>Health&beauty</button>
+        <button>Electronic</button>
+        <button>Home & garden</button>
+      </p>
+      <h2>
+          Shop
+      </h2>
+      <p>
+        <button>Shop1</button>
+        <button>Shop1</button>
+        <button>Shop1</button>
+        <button>Shop1</button>
+        <button>Shop1</button>
+      </p>
+
+      <script>
+        let account = Object.keys(JSON.parse(localStorage.getItem('currentUser')))
+        document.querySelector('.js-account').innerHTML = account
+      </script>
+
+    </body>
+
+   
+</html>
